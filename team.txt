@@ -1,0 +1,12 @@
+This is the team's text file that was created in the team project set up activity
+As instructed the link to the Trello board is added below.
+
+https://trello.com/b/p2qClZA9/wdd-330-block-sleep-outside
+
+I also thought to add the link to the Netlify production site here as well, since this is like a page that has
+the team's informations.
+
+https://wdd330-team-05.netlify.app/
+
+TEAM MEMBERS NAME:
+1. Uyiosa Richmond Izekor
