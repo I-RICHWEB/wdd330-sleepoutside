@@ -4,7 +4,10 @@ import ProductData from "./ProductData.mjs";
 const dataSource = new ProductData("tents");
 
 function addProductToCart(product) {
-  setLocalStorage("so-cart", product);
+  // To fix cart only allowing a single tent item to be store
+  // because the "key" is always the same and not uniques as it require
+  // a unique key at all times. I am going to set the products id as the key.
+  setLocalStorage(`${product.Id}`, product);
 }
 // add to cart button event handler
 async function addToCartHandler(e) {

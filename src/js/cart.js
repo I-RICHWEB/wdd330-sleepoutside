@@ -1,8 +1,20 @@
 import { getLocalStorage } from "./utils.mjs";
 
+// The render cart is broken and does not render cart items
+// The .map method is an array or object method that is suppose to illiterate through
+// an array object.
+const storageItem = [];
+
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+  // I used a smiple for loop to get all the localStorage items and add them
+  // to an object.
+  for (let i = 0; i < localStorage.length; i++) {
+    const storageKey = localStorage.key(i);
+    const cartItems = getLocalStorage(storageKey);
+    storageItem.push(cartItems);
+  }
+
+  const htmlItems = storageItem.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
 
