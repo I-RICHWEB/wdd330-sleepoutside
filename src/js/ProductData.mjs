@@ -1,3 +1,5 @@
+import tents from "../json/tents.json";
+
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
@@ -9,7 +11,7 @@ function convertToJson(res) {
 export default class ProductData {
   constructor(category) {
     this.category = category;
-    this.path = `${location.origin}/json/${this.category}.json`;
+    this.path = `${tents}`;
   }
   getData() {
     return fetch(this.path)
