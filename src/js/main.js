@@ -1,12 +1,11 @@
 // Importing all necessary modules for the supscription
-const cartLink = document.querySelector(".cart");
+import ProductData from "./ProductData.mjs";
+import ProductList from "./ProductList.mjs";
 
-const storageCount = localStorage.length;
-const supElement = document.createElement("sup");
-supElement.setAttribute("class", "cart-sup");
+const dataSource = new ProductData("tents");
 
-supElement.innerHTML = storageCount;
+const element = document.querySelector(".product-list");
 
-if (storageCount > 0) {
-  cartLink.appendChild(supElement);
-}
+const productList = new ProductList("Tents", dataSource, element);
+
+productList.init();
