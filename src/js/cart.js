@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, superScript } from "./utils.mjs";
 
 // The render cart is broken and does not render cart items
 // The .map method is an array or object method that is suppose to illiterate through
@@ -38,3 +38,9 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+
+/* ******************************************
+ ** Calling the superscription of the cart
+ ** items function.
+ ** *************************************** */
+superScript();
