@@ -31,16 +31,33 @@ export function getParam(param) {
 
 // render a list with a template
 export function renderListWithTemplate(
-  templateFn, 
-  parentElement, 
-  list, 
-  position = "afterbegin", 
-  clear = false
+  templateFn,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false,
 ) {
   if (clear) {
-    parentElement.innerHTML = '';
+    parentElement.innerHTML = "";
   }
-  
+
   const htmlStrings = list.map(templateFn);
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
+
+export function superScript() {
+  /* ******************************************
+   ** The following lines of codes is use to
+   ** display a superscription on the cart icon.
+   ** It displays the number of items in the cart.
+   ** *************************************** */
+  const storageItem = localStorage.length; // Getting the lenght of localStorage.
+  if (storageItem > 0) {
+    // Checking if there is anything in the localStorage
+    const parentE = document.querySelector(".cart-link");
+    const sup = document.createElement("sup");
+    sup.setAttribute("class", "cart-sup");
+    sup.textContent = storageItem;
+    parentE.prepend(sup); // Appending the superscription element to the link element that holds the cart icon.
+  }
 }
