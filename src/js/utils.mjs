@@ -22,10 +22,25 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-// Get a parameter from the url when the product is called
+// get URL parameter
 export function getParam(param) {
-  const urlString = window.location.search;
-  const urlParams = new URLSearchParams(urlString);
-  const id = urlParams.get(param);
-  return id;
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get(param);
+}
+
+// render a list with a template
+export function renderListWithTemplate(
+  templateFn, 
+  parentElement, 
+  list, 
+  position = "afterbegin", 
+  clear = false
+) {
+  if (clear) {
+    parentElement.innerHTML = '';
+  }
+  
+  const htmlStrings = list.map(templateFn);
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
 }
