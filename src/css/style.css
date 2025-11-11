@@ -191,6 +191,31 @@ button {
   font-size: 1em;
 }
 
+/* === Discount Badge and Price Styles === */
+.discount-badge {
+  background-color: #d32f2f;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #777;
+  margin-right: 0.25rem;
+}
+
+.new-price {
+  color: #2e7d32;
+  font-weight: 700;
+}
+/* === End Discount Styles === */
+
+
 /* End product list card */
 
 .product-detail {
