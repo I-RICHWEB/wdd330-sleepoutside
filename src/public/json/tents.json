@@ -42,7 +42,8 @@
       "Name": "The North Face"
     },
     "ListPrice": 199.99,
-    "FinalPrice": 199.99
+    "FinalPrice": 199.99,
+    "discount": 0.20
   },
   {
     "Id": "989CG",
@@ -64,8 +65,10 @@
       "Name": "The North Face"
     },
     "ListPrice": 179.99,
-    "FinalPrice": 179.99
+    "FinalPrice": 179.99,
+    "discount": 0.10
   },
+
   {
     "Id": "985PR",
     "NameWithoutBrand": "Alpine Guide Tent - 3-Person, 4-Season",
@@ -86,7 +89,8 @@
       "Name": "The North Face"
     },
     "ListPrice": 349.99,
-    "FinalPrice": 349.99
+    "FinalPrice": 349.99,
+    "discount": 0.15
   },
   {
     "Id": "880RT",
