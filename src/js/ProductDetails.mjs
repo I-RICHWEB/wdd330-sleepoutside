@@ -1,5 +1,5 @@
 // src/js/ProductDetails.mjs
-import { setLocalStorage } from './utils.mjs';
+import { setLocalStorage } from "./utils.mjs";
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -16,13 +16,13 @@ export default class ProductDetails {
     this.renderProductDetails();
     
     // Add event listener to Add to Cart button
-    document.getElementById('addToCart')
-      .addEventListener('click', this.addProductToCart.bind(this));
+    document.getElementById("addToCart")
+      .addEventListener("click", this.addProductToCart.bind(this));
   }
 
   addProductToCart() {
     setLocalStorage(`${this.product.Id}`, this.product);
-    alert('Product added to cart!');
+    alert("Product added to cart!");
   }
 
   renderProductDetails() {
@@ -30,6 +30,17 @@ export default class ProductDetails {
     document.querySelector("#productNameWithoutBrand").textContent = this.product.NameWithoutBrand;
     document.querySelector("#productImage").src = this.product.Image;
     document.querySelector("#productImage").alt = this.product.Name;
+    // Applying discount if available
+    if (this.product.discount && this.product.discount > 0) {
+      const discountPrice = (this.product.FinalPrice * (1 - this.product.discount)).toFixed(2);
+      document.querySelector("#productFinalPrice").innerHTML = `
+        <span class="old-price">$${this.product.FinalPrice}</span>
+        <span class="new-price">$${discountPrice}</span>
+        <span class="discount-badge">${this.product.discount * 100}% OFF</span>`;
+    } else {
+      document.querySelector("#productFinalPrice").textContent = `$${this.product.FinalPrice}`;
+    }
+
     document.querySelector("#productFinalPrice").textContent = `$${this.product.FinalPrice}`;
     document.querySelector("#productColorName").textContent = this.product.Colors[0].ColorName;
     document.querySelector("#productDescriptionHtmlSimple").innerHTML = this.product.DescriptionHtmlSimple;
