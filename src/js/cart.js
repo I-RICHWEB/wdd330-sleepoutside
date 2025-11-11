@@ -23,9 +23,7 @@ function renderCartContents() {
     }
   }
 
-  const htmlItems = storageItems.map(({ key, item }) =>
-    cartItemTemplate(key, item),
-  );
+  const htmlItems = storageItems.map(({ key, item }) => cartItemTemplate(key, item));
   const list = document.querySelector(".product-list");
   if (list) {
     list.innerHTML = htmlItems.join("");
@@ -85,7 +83,7 @@ function escapeHtml(str) {
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
+    .replaceAll("\"", "&quot;")
     .replaceAll("'", "&#039;");
 }
 
