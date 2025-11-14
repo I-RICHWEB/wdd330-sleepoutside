@@ -236,6 +236,16 @@ button {
   grid-column: 3;
 }
 
+.remove-btn {
+  grid-row: 3;
+  grid-column: 3;
+  margin-top: 0;
+  margin-bottom: 3px;
+  text-align: center;
+}
+.remove-btn:hover {
+  border: 2px solid orangered;
+}
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;

@@ -23,7 +23,9 @@ function renderCartContents() {
     }
   }
 
-  const htmlItems = storageItems.map(({ key, item }) => cartItemTemplate(key, item));
+  const htmlItems = storageItems.map(({ key, item }) =>
+    cartItemTemplate(key, item),
+  );
   const list = document.querySelector(".product-list");
   if (list) {
     list.innerHTML = htmlItems.join("");
@@ -35,7 +37,6 @@ function renderCartContents() {
  */
 function cartItemTemplate(key, item) {
   return `<li class="cart-card divider" data-key="${escapeHtml(key)}">
-  <button class="remove-btn" data-key="${escapeHtml(key)}" aria-label="Remove ${escapeHtml(item.Name)}">✕</button>
   <a href="#" class="cart-card__image">
     <img
       src="${escapeHtml(item.Image)}"
@@ -48,6 +49,7 @@ function cartItemTemplate(key, item) {
   <p class="cart-card__color">${escapeHtml(item.Colors?.[0]?.ColorName ?? "")}</p>
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${escapeHtml(item.FinalPrice)}</p>
+  <div class="remove-btn" data-key="${escapeHtml(key)}" aria-label="Remove ${escapeHtml(item.Name)}"><img class="bin-icon" src="../images/delete-bin.png" alt="delete icon"></div>
 </li>`;
 }
 
@@ -83,7 +85,7 @@ function escapeHtml(str) {
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
-    .replaceAll("\"", "&quot;")
+    .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 }
 
