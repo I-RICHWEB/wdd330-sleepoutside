@@ -42,5 +42,57 @@ export function renderListWithTemplate(
   }
   
   const htmlStrings = list.map(templateFn);
+<<<<<<< Updated upstream
   parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
 }
+=======
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
+
+export function superScript() {
+  /* ******************************************
+   ** The following lines of codes is use to
+   ** display a superscription on the cart icon.
+   ** It displays the number of items in the cart.
+   ** *************************************** */
+  const storageItem = localStorage.length; // Getting the lenght of localStorage.
+  if (storageItem > 0) {
+    // Checking if there is anything in the localStorage
+    const parentE = document.querySelector(".cart-link");
+    const sup = document.createElement("sup");
+    sup.setAttribute("class", "cart-sup");
+    sup.textContent = storageItem;
+    parentE.prepend(sup); // Appending the superscription element to the link element that holds the cart icon.
+  }
+}
+
+
+
+// render a single template
+export function renderWithTemplate(template, parentElement, data = {}, callback) {
+  parentElement.innerHTML = template;
+  if (callback) callback();
+}
+
+// fetch HTML template as string
+export async function loadTemplate(path) {
+  const response = await fetch(path);
+  const html = await response.text();
+  return html;
+}
+
+// load header and footer dynamically
+export async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate("/partials/header.html");
+  const footerTemplate = await loadTemplate("/partials/footer.html");
+
+  const headerEl = document.getElementById("main-header");
+  const footerEl = document.getElementById("main-footer");
+
+  renderWithTemplate(headerTemplate, headerEl, {}, () => {
+    superScript(); // restore cart superscript if needed
+  });
+  renderWithTemplate(footerTemplate, footerEl);
+}
+
+>>>>>>> Stashed changes
