@@ -296,3 +296,43 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+/* new new */
+
+/* Layout for heading + toggle */
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.view-toggle button {
+  background: #eee;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.view-toggle button:hover {
+  background: #ddd;
+}
+
+.view-toggle button svg {
+  fill: #333;
+}
+
+.view-toggle button.active {
+  background: #333;
+}
+
+.view-toggle button.active svg {
+  fill: #fff;
+}
