@@ -14,3 +14,4 @@ productDetails.init();
  ** items function.
  ** *************************************** */
 superScript();
+
