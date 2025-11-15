@@ -336,3 +336,15 @@ footer {
 .view-toggle button.active svg {
   fill: #fff;
 }
+
+.product-grid li {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 1.5rem;
+}
+
+.product-list li {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
