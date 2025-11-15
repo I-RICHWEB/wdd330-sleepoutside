@@ -48,23 +48,6 @@ export function renderListWithTemplate(
 
 /* ******************************************
  ** The following lines of codes is use to
- ** display a superscription on the cart icon.
- ** It displays the number of items in the cart.
- ** *************************************** */
-export function superScript() {
-  const storageItem = localStorage.length; // Getting the lenght of localStorage.
-  if (storageItem > 0) {
-    // Checking if there is anything in the localStorage
-    const parentE = document.querySelector(".cart-link");
-    const sup = document.createElement("sup");
-    sup.setAttribute("class", "cart-sup");
-    sup.textContent = storageItem;
-    parentE.prepend(sup); // Appending the superscription element to the link element that holds the cart icon.
-  }
-}
-
-/* ******************************************
- ** The following lines of codes is use to
  ** display the total amount of the cart item/s
  ** It displays the total price of items in the cart.
  ** *************************************** */
@@ -80,5 +63,66 @@ export function cartTotal(cartItems) {
     document.getElementById("total-container").setAttribute("class", "");
   } else {
     document.getElementById("total-container").setAttribute("class", "hide");
+  }
+}
+
+/* ******************************************
+ ** This function will render the header and
+ ** footer of the different pages dynamically
+ ** from a single source file each.
+ ** *************************************** */
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.innerHTML = template;
+  if (callback) {
+    callback(data);
+  }
+}
+
+/* ******************************************
+ ** This function will be use to fetch the
+ ** header and foooter file content using
+ ** the path that will be passed in.
+ ** *************************************** */
+export async function loadTemplate(path) {
+  const data = (await fetch(path)).text();
+  return data;
+}
+
+/* ******************************************
+ ** This function will load the header and
+ ** footer files and convert it to text
+ ** and return the content as a string.
+ ** *************************************** */
+export async function loadHeaderFooter() {
+  const header = await loadTemplate("../partials/header.html");
+  const footer = await loadTemplate("../partials/footer.html");
+  const headerPlaceHolder = document.getElementById("site-header");
+  const footerPlaceHolder = document.getElementById("site-footer");
+
+  renderWithTemplate(header, headerPlaceHolder);
+  renderWithTemplate(footer, footerPlaceHolder);
+
+  /* ******************************************
+   ** Calling the superscription of the cart
+   ** items function to show the numbers of
+   ** items in the cart.
+   ** *************************************** */
+  superScript();
+}
+
+/* ******************************************
+ ** The following lines of codes is use to
+ ** display a superscription on the cart icon.
+ ** It displays the number of items in the cart.
+ ** *************************************** */
+export function superScript() {
+  const storageItem = localStorage.length; // Getting the lenght of localStorage.
+  if (storageItem > 0) {
+    // Checking if there is anything in the localStorage
+    const parentE = document.querySelector(".cart-link");
+    const sup = document.createElement("sup");
+    sup.setAttribute("class", "cart-sup");
+    sup.textContent = storageItem;
+    parentE.prepend(sup); // Appending the superscription element to the link element that holds the cart icon.
   }
 }
