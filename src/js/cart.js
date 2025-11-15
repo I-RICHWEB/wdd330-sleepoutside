@@ -1,4 +1,4 @@
-import { getLocalStorage, superScript } from "./utils.mjs";
+import { getLocalStorage, superScript, cartTotal } from "./utils.mjs";
 
 // Array of objects { key: string, item: object }
 const storageItems = [];
@@ -30,6 +30,9 @@ function renderCartContents() {
   if (list) {
     list.innerHTML = htmlItems.join("");
   }
+
+  // This is the function call to the cart total display
+  cartTotal(storageItems);
 }
 
 /**
@@ -49,7 +52,8 @@ function cartItemTemplate(key, item) {
   <p class="cart-card__color">${escapeHtml(item.Colors?.[0]?.ColorName ?? "")}</p>
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${escapeHtml(item.FinalPrice)}</p>
-  <div class="remove-btn" data-key="${escapeHtml(key)}" aria-label="Remove ${escapeHtml(item.Name)}"><img class="bin-icon" src="../images/delete-bin.png" alt="delete icon"></div>
+  <div class="remove-btn" data-key="${escapeHtml(key)}" aria-label="Remove ${escapeHtml(item.Name)}">
+  <img class="bin-icon" src="../images/delete-bin.png" alt="delete icon"></div>
 </li>`;
 }
 
@@ -70,7 +74,6 @@ function attachRemoveHandler() {
 
     // Optional: confirmation
     // if (!confirm("Remove this item from the cart?")) return;
-
     localStorage.removeItem(key);
     renderCartContents();
   });
@@ -85,7 +88,7 @@ function escapeHtml(str) {
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
+    .replaceAll(`"`, "&quot;")
     .replaceAll("'", "&#039;");
 }
 

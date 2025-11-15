@@ -12,6 +12,7 @@ export function getLocalStorage(key) {
 // save data to local storage
 export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
+  alert("Product added to cart!");
 }
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
@@ -45,12 +46,12 @@ export function renderListWithTemplate(
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
+/* ******************************************
+ ** The following lines of codes is use to
+ ** display a superscription on the cart icon.
+ ** It displays the number of items in the cart.
+ ** *************************************** */
 export function superScript() {
-  /* ******************************************
-   ** The following lines of codes is use to
-   ** display a superscription on the cart icon.
-   ** It displays the number of items in the cart.
-   ** *************************************** */
   const storageItem = localStorage.length; // Getting the lenght of localStorage.
   if (storageItem > 0) {
     // Checking if there is anything in the localStorage
@@ -59,5 +60,26 @@ export function superScript() {
     sup.setAttribute("class", "cart-sup");
     sup.textContent = storageItem;
     parentE.prepend(sup); // Appending the superscription element to the link element that holds the cart icon.
+  }
+}
+
+/* ******************************************
+ ** The following lines of codes is use to
+ ** display the total amount of the cart item/s
+ ** It displays the total price of items in the cart.
+ ** *************************************** */
+export function cartTotal(cartItems) {
+  let total = 0;
+
+  if (cartItems.length > 0) {
+    cartItems.forEach((item) => {
+      total += item.item.FinalPrice;
+    });
+    document.querySelector(".cart-total").innerHTML =
+      `<strong>Total:</strong> $${total.toFixed(2)}`;
+
+    document.getElementById("total-container").setAttribute("class", "");
+  } else {
+    document.getElementById("total-container").setAttribute("class", "hide");
   }
 }
