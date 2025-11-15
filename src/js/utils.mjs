@@ -70,7 +70,6 @@ export function superScript() {
  ** *************************************** */
 export function cartTotal(cartItems) {
   let total = 0;
-
   if (cartItems.length > 0) {
     cartItems.forEach((item) => {
       total += item.item.FinalPrice;
