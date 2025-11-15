@@ -23,6 +23,7 @@ export default class ProductDetails {
 
   addProductToCart() {
     setLocalStorage(`${this.product.Id}`, this.product);
+    alert("Product added to cart!");
   }
 
   renderProductDetails() {
