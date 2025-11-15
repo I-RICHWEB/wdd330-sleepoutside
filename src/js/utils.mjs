@@ -42,10 +42,6 @@ export function renderListWithTemplate(
   }
   
   const htmlStrings = list.map(templateFn);
-<<<<<<< Updated upstream
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
-}
-=======
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
@@ -95,4 +91,3 @@ export async function loadHeaderFooter() {
   renderWithTemplate(footerTemplate, footerEl);
 }
 
->>>>>>> Stashed changes
