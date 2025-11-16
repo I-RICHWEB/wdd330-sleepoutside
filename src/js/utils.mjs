@@ -12,6 +12,7 @@ export function getLocalStorage(key) {
 // save data to local storage
 export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
+  alert("Product added to cart!");
 }
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
@@ -31,16 +32,16 @@ export function getParam(param) {
 
 // render a list with a template
 export function renderListWithTemplate(
-  templateFn, 
-  parentElement, 
-  list, 
-  position = "afterbegin", 
-  clear = false
+  templateFn,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false,
 ) {
   if (clear) {
-    parentElement.innerHTML = '';
+    parentElement.innerHTML = "";
   }
-  
+
   const htmlStrings = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }

@@ -7,7 +7,8 @@ loadHeaderFooter().then(() => {
   const dataSource = new ProductData("tents");
 
   // Ensure URL parameter matches your links (either "product" or "id")
-  const productId = getParam("product"); 
+  const productId = getParam("product") || getParam("id");
+ 
 
   if (!productId) {
     document.querySelector(".product-detail").innerHTML = "<p>No product selected.</p>";

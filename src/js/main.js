@@ -9,7 +9,7 @@ loadHeaderFooter();
 const dataSource = new ProductData("tents");
 const listElement = document.querySelector("#home-products"); 
 
-const productList = new ProductList('tents', dataSource, listElement);
+const productList = new ProductList("tents", dataSource, listElement);
 productList.init();
 
 // ❌ DO NOT call superScript() manually here anymore
