@@ -1,4 +1,4 @@
-import { getLocalStorage, superScript, cartTotal } from "./utils.mjs";
+import { getLocalStorage, superScript} from "./utils.mjs";
 
 // Array of objects { key: string, item: object }
 const storageItems = [];
