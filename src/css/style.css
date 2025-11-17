@@ -160,9 +160,12 @@ button {
   display: flex;
   flex-flow: row wrap;
   list-style-type: none;
-  justify-content: center;
+  justify-content: space-evenly;
 }
-
+.product-list li a h3 {
+  font-size: var(--font-base);
+  text-align: center;
+}
 .product-list a {
   text-decoration: none;
   color: var(--dark-grey);
