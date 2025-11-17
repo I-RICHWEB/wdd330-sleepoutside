@@ -14,7 +14,6 @@ productList.init();
  ** dynamically load the header and footer.
  ** *************************************** */
 loadHeaderFooter();
-superScript();
 
 const gridBtn = document.getElementById("gridViewBtn");
 const listBtn = document.getElementById("listViewBtn");
