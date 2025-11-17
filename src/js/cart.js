@@ -1,4 +1,4 @@
-import { getLocalStorage, superScript, cartTotal } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter, cartTotal } from "./utils.mjs";
 
 // Array of objects { key: string, item: object }
 const storageItems = [];
@@ -88,11 +88,15 @@ function escapeHtml(str) {
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 }
+
+/* ******************************************
+ ** Calling the loadHeaderFooter function to
+ ** dynamically load the header and footer.
+ ** *************************************** */
+loadHeaderFooter();
 
 // Initial render + attach handlers + run superscription
 renderCartContents();
 attachRemoveHandler();
-superScript();
