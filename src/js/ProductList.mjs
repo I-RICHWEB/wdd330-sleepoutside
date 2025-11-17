@@ -2,12 +2,11 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
-  // Проверяем, есть ли скидка (если SuggestedRetailPrice больше FinalPrice)
-  const hasDiscount =
-    product.SuggestedRetailPrice &&
+  // Check if there is a discount (if SuggestedRetailPrice is greater than FinalPrice)
+  const hasDiscount = product.SuggestedRetailPrice &&
     product.FinalPrice < product.SuggestedRetailPrice;
 
-  // Вычисляем процент скидки
+  // Calculate discount percentage
   const discountPercent = hasDiscount
     ? Math.round(
         ((product.SuggestedRetailPrice - product.FinalPrice) /
