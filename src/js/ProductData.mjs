@@ -1,3 +1,9 @@
+/* ******************************************
+ ** Importing all the important files
+ ** and object that we will need.
+ ** *************************************** */
+const baseURL = import.meta.env.VITE_SERVER_URL;
+
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
@@ -7,17 +13,23 @@ function convertToJson(res) {
 }
 
 export default class ProductData {
-  constructor(category) {
-    this.category = category;
-    this.path = `/json/${this.category}.json`;
+  /* ******************************************
+   ** The following lines of code gets the products
+   ** from the API endpoint and it returns it.
+   ** *************************************** */
+  async getData(category) {
+    const data = await fetch(`${baseURL}products/search/${category}`);
+    const products = await convertToJson(data);
+    return products.Result;
   }
-  getData() {
-    return fetch(this.path)
-      .then(convertToJson)
-      .then((data) => data);
-  }
+
+  /* ******************************************
+   ** The following lines of code is use to find
+   ** specific products by their ID
+   ** *************************************** */
   async findProductById(id) {
-    const products = await this.getData();
-    return products.find((item) => item.Id === id);
+    const res = await fetch(`${baseURL}product/${id}`);
+    const products = await convertToJson(res);
+    return products.Result;
   }
 }

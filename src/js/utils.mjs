@@ -126,3 +126,16 @@ export function superScript() {
     parentE.prepend(sup); // Appending the superscription element to the link element that holds the cart icon.
   }
 }
+
+/* ******************************************
+ ** The following function is use to change the
+ ** words to Sentence case.
+ ** *************************************** */
+export function toSentenceCase(data) {
+  if (!data || data.length === 0) {
+    return "";
+  }
+  const allLowCase = data.toLowerCase();
+  const sentenceCase = allLowCase.charAt(0).toUpperCase() + allLowCase.slice(1);
+  return sentenceCase;
+}
