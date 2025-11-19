@@ -1,5 +1,4 @@
 <!doctype html>
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -36,13 +35,20 @@
             </svg>
           </button>
         </div>
+
+        <!-- Sort control added -->
+        <div class="sort-control">
+          <label for="sortSelect">Sort by:</label>
+          <select id="sortSelect" aria-label="Sort products">
+            <option value="name-asc">Name (A - Z)</option>
+            <option value="name-desc">Name (Z - A)</option>
+            <option value="price-asc">Price (Low → High)</option>
+            <option value="price-desc">Price (High → Low)</option>
+          </select>
+        </div>
       </div>
 
-      <!-- <section class="products">
-        <h2>Top Products</h2> -->
-      <!-- Remove all hard-coded <li> elements - JavaScript will add them dynamically -->
       <ul id="home-products" class="product-list"></ul>
-      <!-- </section> -->
     </main>
     <footer id="site-footer"></footer>
     <script src="../js/product-listing.js" type="module"></script>
