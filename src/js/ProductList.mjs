@@ -11,7 +11,7 @@ function productCardTemplate(product) {
     ? Math.round(
         ((Number(product.SuggestedRetailPrice) - Number(product.FinalPrice)) /
           Number(product.SuggestedRetailPrice)) *
-          100
+          100,
       )
     : 0;
 
