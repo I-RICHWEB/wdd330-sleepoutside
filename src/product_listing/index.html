@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Home</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <header id="site-header" class="divider"></header>
+    <main class="divider">
+      <div class="products-header">
+        <h2>
+          Top Products: <strong><span id="category"></span></strong>
+        </h2>
+
+        <div class="view-toggle">
+          <button id="gridViewBtn" title="Grid View" class="active">
+            <!-- Grid Icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+            </svg>
+          </button>
+
+          <button id="listViewBtn" title="List View">
+            <!-- List Icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24">
+              <rect x="4" y="6" width="16" height="2"></rect>
+              <rect x="4" y="11" width="16" height="2"></rect>
+              <rect x="4" y="16" width="16" height="2"></rect>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Sort control added -->
+        <div class="sort-control">
+          <label for="sortSelect">Sort by:</label>
+          <select id="sortSelect" aria-label="Sort products">
+            <option value="name-asc">Name (A - Z)</option>
+            <option value="name-desc">Name (Z - A)</option>
+            <option value="price-asc">Price (Low → High)</option>
+            <option value="price-desc">Price (High → Low)</option>
+          </select>
+        </div>
+      </div>
+
+      <ul id="home-products" class="product-list"></ul>
+    </main>
+    <footer id="site-footer"></footer>
+    <script src="../js/product-listing.js" type="module"></script>
+  </body>
+</html>
