@@ -15,6 +15,8 @@ export default class ProductDetails {
     // Render the product details
     this.renderProductDetails();
 
+    productDetailsDiscount(this.product);
+
     // Add event listener to Add to Cart button
     document
       .getElementById("addToCart")
@@ -30,7 +32,8 @@ export default class ProductDetails {
     document.querySelector("#productName").textContent = this.product.Name;
     document.querySelector("#productNameWithoutBrand").textContent =
       this.product.NameWithoutBrand;
-    document.querySelector("#productImage").src = this.product.Image;
+    document.querySelector("#productImage").src =
+      this.product.Images.PrimaryLarge;
     document.querySelector("#productImage").alt = this.product.Name;
     document.querySelector("#productFinalPrice").textContent =
       `$${this.product.FinalPrice}`;
