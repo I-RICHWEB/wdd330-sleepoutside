@@ -352,6 +352,9 @@ footer {
   margin-bottom: 1rem;
 }
 
+.dis-con {
+  position: relative;
+}
 /* sale badge */
 
 /* Product card needs position relative for badge positioning */
