@@ -20,7 +20,7 @@
         <h2>Review & Place your Order</h2>
       </section>
       <div id="form-container" class="fcontainer">
-        <form action="">
+        <form id="checkout-form" class="form">
           <fieldset>
             <legend>Personal Info</legend>
             <label for="fname" class="labels">First Name:</label>
@@ -78,13 +78,6 @@
             />
           </fieldset>
 
-          <div class="order-summary">
-            <p id="subtotal" class="check">Subtotal:</p>
-            <p id="tax" class="check">Tax:</p>
-            <p id="shipping" class="check">Shipping Estimate:</p>
-            <p id="order-total" class="check">Order Total:</p>
-          </div>
-
           <input
             type="submit"
             id="form-submit"
@@ -92,6 +85,12 @@
             value="Make Order"
           />
         </form>
+        <div class="order-summary">
+          <p id="subtotal" class="check">Subtotal:</p>
+          <p id="tax" class="check">Tax:</p>
+          <p id="shipping" class="check">Shipping Estimate:</p>
+          <p id="order-total" class="check">Order Total:</p>
+        </div>
       </div>
     </main>
 

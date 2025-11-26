@@ -12,7 +12,7 @@ function convertToJson(res) {
   }
 }
 
-export default class ProductData {
+export default class ExternalServices {
   /* ******************************************
    ** The following lines of code gets the products
    ** from the API endpoint and it returns it.
@@ -31,5 +31,16 @@ export default class ProductData {
     const res = await fetch(`${baseURL}product/${id}`);
     const products = await convertToJson(res);
     return products.Result;
+  }
+
+  async checkout(orderObject) {
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(orderObject),
+    };
+    const res = await fetch(`${baseURL}checkout`, options);
+    // const data = await convertToJson(res);
+    return res.status;
   }
 }
