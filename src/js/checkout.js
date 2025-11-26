@@ -1,5 +1,6 @@
-import { loadHeaderFooter, getLocalStorage, cartTotal } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess.mjs";
+// import { getFormData } from "./CheckoutProcess.mjs";
 // import ShoppingCart from "./ShoppingCart.mjs";
 
 /* ******************************************
@@ -11,7 +12,7 @@ loadHeaderFooter();
 /* ******************************************
  ** This is the checkout process codes.
  ** *************************************** */
-const checkoutprocess = new CheckoutProcess(getLocalStorage);
+const checkoutprocess = new CheckoutProcess();
 
 /* ******************************************
  ** A call for the subtotal method of the
@@ -54,3 +55,11 @@ function orderSum() {
   document.getElementById("order-total").innerHTML =
     `<strong>Order Total:</strong> $${orderTotal}`;
 }
+
+const formElement = document.getElementById("checkout-form");
+formElement.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const pro = await checkoutprocess.checkout(event.target);
+  console.log(`All is well ${pro}`);
+});

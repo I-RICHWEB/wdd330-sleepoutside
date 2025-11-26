@@ -1,7 +1,7 @@
 // product-listing.js (previously shown as main.js)
 // Ensure this file path matches the <script> tag in your HTML
 
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
 import { loadHeaderFooter, getParam, toSentenceCase } from "./utils.mjs";
 
@@ -16,7 +16,7 @@ loadHeaderFooter();
  ** for dynamically rendering the products to
  ** the product listing page.
  *******************************************/
-const dataSource = new ProductData();
+const dataSource = new ExternalServices();
 const listElement = document.querySelector("#home-products"); // Adjust selector to match your HTML
 const category = getParam("category");
 const productList = new ProductList(category, dataSource, listElement);
