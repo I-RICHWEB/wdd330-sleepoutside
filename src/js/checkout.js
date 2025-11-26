@@ -1,4 +1,4 @@
-import { loadHeaderFooter, cartTotal } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess.mjs";
 // import { getFormData } from "./CheckoutProcess.mjs";
 // import ShoppingCart from "./ShoppingCart.mjs";
