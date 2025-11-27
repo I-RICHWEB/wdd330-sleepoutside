@@ -1,5 +1,5 @@
 // src/js/ProductDetails.mjs
-import { setLocalStorage } from "./utils.mjs";
+import { setLocalStorage } from './utils.mjs';
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -11,62 +11,28 @@ export default class ProductDetails {
   async init() {
     // Get product details
     this.product = await this.dataSource.findProductById(this.productId);
-
+    
     // Render the product details
     this.renderProductDetails();
-    // Adding the product discount to the product details page
-    productDetailsDiscount(this.product);
+    
     // Add event listener to Add to Cart button
-    document
-      .getElementById("addToCart")
-      .addEventListener("click", this.addProductToCart.bind(this));
+    document.getElementById('addToCart')
+      .addEventListener('click', this.addProductToCart.bind(this));
   }
 
   addProductToCart() {
     setLocalStorage(`${this.product.Id}`, this.product);
-    // alert('Product added to cart!');
+    alert('Product added to cart!');
   }
 
   renderProductDetails() {
     document.querySelector("#productName").textContent = this.product.Name;
-    document.querySelector("#productNameWithoutBrand").textContent =
-      this.product.NameWithoutBrand;
-    document.querySelector("#productImage").src =
-      this.product.Images.PrimaryLarge;
+    document.querySelector("#productNameWithoutBrand").textContent = this.product.NameWithoutBrand;
+    document.querySelector("#productImage").src = this.product.Image;
     document.querySelector("#productImage").alt = this.product.Name;
-    document.querySelector("#productFinalPrice").textContent =
-      `$${this.product.FinalPrice}`;
-    document.querySelector("#productColorName").textContent =
-      this.product.Colors[0].ColorName;
-    document.querySelector("#productDescriptionHtmlSimple").innerHTML =
-      this.product.DescriptionHtmlSimple;
+    document.querySelector("#productFinalPrice").textContent = `$${this.product.FinalPrice}`;
+    document.querySelector("#productColorName").textContent = this.product.Colors[0].ColorName;
+    document.querySelector("#productDescriptionHtmlSimple").innerHTML = this.product.DescriptionHtmlSimple;
     document.querySelector("#addToCart").dataset.id = this.product.Id;
   }
-}
-
-// Discount in the product details page.
-function productDetailsDiscount(product) {
-  // Check if there is a discount (if SuggestedRetailPrice is greater than FinalPrice)
-  const hasDiscount =
-    product.SuggestedRetailPrice &&
-    Number(product.FinalPrice) < Number(product.SuggestedRetailPrice);
-
-  // Calculate discount percentage
-  const discountPercent = hasDiscount
-    ? Math.round(
-        ((Number(product.SuggestedRetailPrice) - Number(product.FinalPrice)) /
-          Number(product.SuggestedRetailPrice)) *
-          100,
-      )
-    : 0;
-
-  // Safely format prices
-  const formatPrice = (p) => {
-    const n = Number(p);
-    return Number.isFinite(n) ? n.toFixed(2) : p;
-  };
-
-  document.querySelector(".sale-dis-badge").innerHTML = hasDiscount
-    ? `<span class="sale-badge">-${discountPercent}%</span>`
-    : "";
 }
