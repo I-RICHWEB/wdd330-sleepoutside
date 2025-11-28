@@ -63,7 +63,7 @@ formElement.addEventListener("submit", async function (event) {
   const pro = await checkoutprocess.checkout(event.target);
   if (pro >= "200" && pro <= "300") {
     window.localStorage.clear();
-    window.location.href = "success.html";
+    location.assign("/checkout/success.html");
   } else {
     alertMessage(`Error in process: ${pro}`, "failed");
   }
