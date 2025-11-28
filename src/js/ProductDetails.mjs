@@ -1,5 +1,5 @@
 // src/js/ProductDetails.mjs
-import { setLocalStorage } from "./utils.mjs";
+import { setLocalStorage, alertMessage } from "./utils.mjs";
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -25,7 +25,7 @@ export default class ProductDetails {
 
   addProductToCart() {
     setLocalStorage(`${this.product.Id}`, this.product);
-    alert("Product added to cart!");
+    alertMessage("Product added to cart!", "success");
   }
 
   renderProductDetails() {

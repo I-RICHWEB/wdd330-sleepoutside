@@ -1,4 +1,4 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, alertMessage } from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess.mjs";
 // import { getFormData } from "./CheckoutProcess.mjs";
 // import ShoppingCart from "./ShoppingCart.mjs";
@@ -61,5 +61,10 @@ formElement.addEventListener("submit", async function (event) {
   event.preventDefault();
 
   const pro = await checkoutprocess.checkout(event.target);
-  console.log(`All is well ${pro}`);
+  if (pro >= "200" && pro <= "300") {
+    window.localStorage.clear();
+    window.location.href = "success.html";
+  } else {
+    alertMessage(`Error in process: ${pro}`, "failed");
+  }
 });

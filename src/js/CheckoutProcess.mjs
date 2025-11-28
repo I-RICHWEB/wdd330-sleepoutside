@@ -61,7 +61,6 @@ export default class CheckoutProcess {
 
   // The checkout method of the checkout process.
   async checkout(formElement) {
-    // const formElement = document.getElementById("checkout-form");
     const formDetails = getFormData(formElement);
     const simpleCartItemList = packageItems();
     const ordTotal = this.orderTotal();
