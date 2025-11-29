@@ -489,3 +489,35 @@ footer {
   border-radius: 45%;
   margin-left: 50%;
 }
+
+/* sign up/sign in buttons */
+.auth-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto; /* push to right side */
+}
+
+@media (max-width: 768px) {
+  .auth-buttons {
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 0.5rem 0 0 0;
+  }
+}
+
+.modal {
+  display: none; /* hidden by default */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 10000; /* only active when displayed */
+  pointer-events: none; /* prevent blocking clicks when hidden */
+}
+
+.modal.show {
+  display: block;
+  pointer-events: auto;
+}
