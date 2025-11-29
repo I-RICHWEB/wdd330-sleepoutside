@@ -424,3 +424,68 @@ footer {
     right: 8px;
   }
 }
+
+/* Checkout Success page stylings.*/
+#success-main {
+  text-align: center;
+}
+.successfull {
+  color: green;
+  background-color: whitesmoke;
+  overflow: hidden;
+  padding: 2rem;
+  border-left: 4px solid green;
+  border-radius: 8px;
+  border-right: 4px solid green;
+}
+.return-home {
+  padding: 0.4rem;
+  background-color: navy;
+  text-decoration: none;
+  color: whitesmoke;
+  border-radius: 5px;
+}
+.return-home:hover {
+  background-color: whitesmoke;
+  color: navy;
+  border: 2px solid navy;
+}
+
+.success {
+  border: 2px solid green;
+  border-radius: 5px;
+  font-size: large;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  color: green;
+}
+.success p {
+  display: inline;
+  align-items: start;
+}
+.success span {
+  color: white;
+  padding: 0.2rem;
+  background-color: red;
+  border-radius: 45%;
+  margin-left: 50%;
+}
+.failed {
+  border: 2px solid red;
+  border-radius: 5px;
+  font-size: large;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  color: red;
+}
+.failed p {
+  display: inline;
+  align-items: start;
+}
+.failed span {
+  color: white;
+  padding: 0.2rem;
+  background-color: red;
+  border-radius: 45%;
+  margin-left: 50%;
+}
