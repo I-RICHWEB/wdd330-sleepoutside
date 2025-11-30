@@ -520,4 +520,10 @@ footer {
 .modal.show {
   display: block;
   pointer-events: auto;
+/* For item increment button  */
+.qty-btn {
+  font-size: 0.8rem;       /* smaller text */
+  padding: 0.25rem 0.5rem; /* smaller button size */
+  width: 25px;             /* optional fixed width */
+  height: 25px;            /* optional fixed height */
 }
