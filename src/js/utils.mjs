@@ -92,22 +92,84 @@ export async function loadTemplate(path) {
  ** footer files and convert it to text
  ** and return the content as a string.
  ** *************************************** */
+// utils.mjs
+
 export async function loadHeaderFooter() {
-  const header = await loadTemplate("../partials/header.html");
-  const footer = await loadTemplate("../partials/footer.html");
+  const headerHTML = await loadTemplate("../partials/header.html");
+  const footerHTML = await loadTemplate("../partials/footer.html");
+
   const headerPlaceHolder = document.getElementById("site-header");
   const footerPlaceHolder = document.getElementById("site-footer");
 
-  renderWithTemplate(header, headerPlaceHolder);
-  renderWithTemplate(footer, footerPlaceHolder);
+  renderWithTemplate(headerHTML, headerPlaceHolder);
+  renderWithTemplate(footerHTML, footerPlaceHolder);
 
-  /* ******************************************
-   ** Calling the superscription of the cart
-   ** items function to show the numbers of
-   ** items in the cart.
-   ** *************************************** */
+  // Add Auth Buttons
+  const authContainer = document.createElement("div");
+  authContainer.classList.add("auth-buttons");
+  authContainer.innerHTML = `
+    <button class="btn-signin">Sign In</button>
+    <button class="btn-signup">Sign Up</button>
+  `;
+  headerPlaceHolder.appendChild(authContainer);
+
+  // Insert Modal
+  const modal = document.createElement("div");
+  modal.id = "authModal";
+  modal.className = "modal";
+  modal.innerHTML = `
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <form id="authForm">
+        <h2>Sign Up / Sign In</h2>
+        <label>Name:</label>
+        <input type="text" id="userName" required>
+        <label>Email:</label>
+        <input type="email" id="userEmail" required>
+        <label>Password:</label>
+        <input type="password" id="userPassword" required>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  // Modal CSS for proper layering
+  const style = document.createElement("style");
+  style.textContent = `
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+             background: rgba(0,0,0,0.6); z-index: 10000; pointer-events: none; }
+    .modal.show { display: block; pointer-events: auto; }
+    .modal-content { background: white; margin: 10% auto; padding: 20px; max-width: 400px; border-radius: 8px; position: relative; }
+    .close-btn { position: absolute; top: 10px; right: 15px; cursor: pointer; font-size: 20px; }
+    .auth-buttons { display: flex; gap: 10px; margin-left: auto; }
+    @media(max-width:768px) { .auth-buttons { flex-direction: column; } }
+  `;
+  document.head.appendChild(style);
+
+  // Show/Hide Modal
+  const closeBtn = modal.querySelector(".close-btn");
+  authContainer.querySelector(".btn-signin").addEventListener("click", () => modal.classList.add("show"));
+  authContainer.querySelector(".btn-signup").addEventListener("click", () => modal.classList.add("show"));
+  closeBtn.addEventListener("click", () => modal.classList.remove("show"));
+  window.addEventListener("click", (e) => { if(e.target === modal) modal.classList.remove("show"); });
+
+  // Optional: handle form submission
+  const form = modal.querySelector("#authForm");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = form.userName.value;
+    const email = form.userEmail.value;
+    const password = form.userPassword.value;
+    console.log("Form submitted:", { name, email, password });
+    alertMessage("Submitted successfully!", "success");
+    modal.classList.remove("show");
+  });
+
+  // Update cart badge as usual
   superScript();
 }
+
 
 /* ******************************************
  ** The following lines of codes is use to
